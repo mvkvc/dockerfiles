@@ -39,7 +39,7 @@ RUN mkdir /.julia # && chown ${USER_ID} /.julia
 COPY requirements.jl /tmp/
 RUN julia /tmp/requirements.jl
 
-ADD requirements.txt /tmp/
+COPY requirements.txt /tmp/
 RUN python3 -m pip install -r /tmp/requirements.txt
 
 RUN jupyter notebook --generate-config -y
