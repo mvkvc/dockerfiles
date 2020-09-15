@@ -1,0 +1,5 @@
+cmake
+numpy
+pandas
+matplotlib
+pytorch-lightning
