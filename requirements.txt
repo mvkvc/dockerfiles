@@ -2,5 +2,7 @@ cmake
 numpy
 pandas
 matplotlib
+d2l
 pytorch-lightning
 gym
+#mxnet CUDA ver dep added in dockerfile
