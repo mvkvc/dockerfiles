@@ -5,10 +5,10 @@
 #       --ip=0.0.0.0 \
 #       --no-browser
 
-FROM nvidia/cuda:10.2-devel-ubuntu18.04
+FROM nvidia/cuda:10.0-devel-ubuntu18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-
+ARG CUDA_VER=100
 ARG JULIA_VER=1.5.1
 ARG JULIA_URL=https://julialang-s3.julialang.org/bin/linux/x64/1.5
 
@@ -40,33 +40,37 @@ COPY requirements.jl /tmp/
 RUN julia /tmp/requirements.jl
 
 COPY requirements.txt /tmp/
+RUN echo "mxnet-cu${CUDA_VER}" >> /tmp/requirements.txt
 RUN python3 -m pip install -r /tmp/requirements.txt
 
 RUN jupyter notebook --generate-config -y
 RUN echo "c.NotebookApp.token = '7u%OV1xWG&7m'" >> /root/.jupyter/jupyter_notebook_config.py
 RUN echo "c.NotebookApp.disable_check_xsrf = True" >> /root/.jupyter/jupyter_notebook_config.py
 
-RUN git clone --recursive https://github.com/apache/incubator-mxnet mxnet
-RUN mkdir /mxnet/build
+#RUN git clone --recursive https://github.com/apache/incubator-mxnet mxnet
+#RUN mkdir /mxnet/build
 
-WORKDIR /mxnet/build
+#WORKDIR /mxnet/build
 
-RUN cmake ..
-RUN cmake --build .
+#RUN cmake ..
+#RUN cmake --build .
 
-WORKDIR /mxnet
+#WORKDIR /mxnet
 
 # To install the MXNet Python binding navigate to the root of the MXNet folder
 # then run the following:
-RUN python3 -m pip install --user -e ./python
-RUN python3 -m pip install --user graphviz==0.8.4 jupyter
+#RUN python3 -m pip install --user -e ./python
+#RUN python3 -m pip install --user graphviz==0.8.4 jupyter
 
-WORKDIR /
+#WORKDIR /
 
 # To use the Julia binding you need to set the MXNET_HOME and LD_LIBRARY_PATH
 # environment variables. For example,
-ENV MXNET_HOME=/mxnet
-ENV LD_LIBRARY_PATH=/mxnet/build:$LD_LIBRARY_PATH
-RUN julia --color=yes --project=./ -e \
-      'using Pkg; \
-       Pkg.develop(PackageSpec(name="MXNet", path = joinpath(ENV["MXNET_HOME"], "julia")))'
+#ENV MXNET_HOME=$HOME/mxnet
+#ENV LD_LIBRARY_PATH=$HOME/mxnet/build:$LD_LIBRARY_PATH
+#RUN julia --color=yes --project=./ -e \
+#      'using Pkg; \
+#       Pkg.develop(PackageSpec(name="MXNet", path = joinpath(ENV["MXNET_HOME"], "julia")))'
+
+RUN mkdir /_dev
+RUN git clone https://github.com/d2l-ai/d2l-en-colab /_dev/d2l

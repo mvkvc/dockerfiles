@@ -28,13 +28,13 @@ ENV PATH=/miniconda/bin:${PATH}
 # Install Jupyter
 RUN conda update -y conda && \
 	conda install -y -c conda-forge jupyterlab
-RUN mkdir /.local && # chown ${USER_ID} /.local
+RUN mkdir /.local # && chown ${USER_ID} /.local
 
 RUN curl -LO ${JULIA_URL}/julia-${JULIA_VER}-linux-x86_64.tar.gz && \
 	tar -xf julia-${JULIA_VER}-linux-x86_64.tar.gz && \
 	rm -rf julia-${JULIA_VER}-linux-x86_64.tar.gz && \
 	ln -s /julia-${JULIA_VER}/bin/julia /usr/local/bin/julia
-RUN mkdir /.julia && # chown ${USER_ID} /.julia
+RUN mkdir /.julia # && chown ${USER_ID} /.julia
 
 #RUN useradd --no-log-init --system --uid ${USER_ID} \
 #	--create-home --shell /bin/bash julia-user
