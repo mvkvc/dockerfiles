@@ -1,8 +1,8 @@
 cmake
+d2l
+gym
+jupyter_kernel_gateway
+matplotlib
 numpy
 pandas
-matplotlib
-d2l
 pytorch-lightning
-gym
-#mxnet CUDA ver dep added in dockerfile

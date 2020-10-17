@@ -9,7 +9,7 @@ FROM nvidia/cuda:10.0-devel-ubuntu18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ARG CUDA_VER=100
-ARG JULIA_VER=1.5.1
+ARG JULIA_VER=1.5.2
 ARG JULIA_URL=https://julialang-s3.julialang.org/bin/linux/x64/1.5
 
 EXPOSE 8888

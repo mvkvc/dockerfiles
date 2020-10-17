@@ -6,7 +6,6 @@ metadata_packages = ["Atom",
 		"DifferentialEquations",
 		"DataFrames",
 		"LightGraphs",
-		"GraphPlot",
 		"Plots"]
 
 using Pkg
