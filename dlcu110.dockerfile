@@ -1,4 +1,5 @@
-#alias dlbuild='sudo docker build /home/marko/. -f dl-docker/dlcu110.dockerfile -t "gcr.io/dl-comp/dl:latest"'
+#alias dlbuild='sudo docker build /home/marko/dev/. -f dl-docker/dlcu110.dockerfile -t "gcr.io/dl-comp/dl:latest"'
+#alias dlpull='sudo docker pull "gcr.io/dl-comp/dl:latest"'
 #alias dlpush='sudo docker push "gcr.io/dl-comp/dl:latest"'
 #alias dlrun='sudo docker run --gpus all -p 8888:8888 gcr.io/dl-comp/dl:latest jupyter notebook \
 #       --allow-root \
@@ -6,10 +7,10 @@
 #       --no-browser'
 
 
-FROM nvidia/cuda:11.0-devel-ubuntu18.04
+FROM nvidia/cuda:11.0-devel-ubuntu20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-ARG JULIA_VER=1.5.2
+ARG JULIA_VER=1.5.3
 ARG JULIA_URL=https://julialang-s3.julialang.org/bin/linux/x64/1.5
 
 EXPOSE 8888
