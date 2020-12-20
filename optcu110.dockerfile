@@ -5,16 +5,17 @@ EXPOSE 8888
 USER root
 WORKDIR /
 
-RUN sudo wget \
-    	https://dvc.org/deb/dvc.list \
-    	-O /etc/apt/sources.list.d/dvc.list
-
 RUN apt-get update && apt-gest install -y \
 	build-essential \
+  wget \
 	git \
 	vim \
-	python3-pip \
-	dvc
+	python3-pip
+
+RUN wget \
+  https://dvc.org/deb/dvc.list \
+  -O /etc/apt/sources.list.d/dvc.list
+RUN apt-get update && apt-get install -y dvc
 
 RUN git clone https://github.com/mvkvc/options-research
 RUN python3 -m pip install -r /options-research/docker/requirements.txt
