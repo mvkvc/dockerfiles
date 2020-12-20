@@ -5,7 +5,7 @@ EXPOSE 8888
 USER root
 WORKDIR /
 
-RUN apt-get update && apt-gest install -y \
+RUN apt-get update && apt-get install -y \
 	build-essential \
   wget \
 	git \
