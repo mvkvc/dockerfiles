@@ -1,5 +1,8 @@
-tensorflow==1.3.0
+cmake
+d2l
+gym
+jupyter_kernel_gateway
+matplotlib
 numpy
 pandas
-matplotlib
-jupyterlab
+pytorch-lightning
