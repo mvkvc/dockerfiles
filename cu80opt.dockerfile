@@ -16,7 +16,8 @@ RUN apt-get update && apt-get install -y \
 RUN wget \
   https://dvc.org/deb/dvc.list \
   -O /etc/apt/sources.list.d/dvc.list
-RUN apt-get update && apt-get install -y dvc
+RUN apt update
+RUN apt install -y dvc
 
 RUN git clone https://github.com/mvkvc/options-research ddpg_daibing
 RUN python3 -m pip install --upgrade pip
