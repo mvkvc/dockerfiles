@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Install NVIDIA drivers
-apt install nvidia-driver-455
+apt-get install ubuntu-drivers-common -y
+ubuntu-drivers devices
+ubuntu-drivers autoinstall
 
 # Install docker
 curl https://get.docker.com | sh \
