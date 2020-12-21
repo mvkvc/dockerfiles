@@ -7,6 +7,8 @@ EXPOSE 8888
 USER root
 WORKDIR /
 
+RUN mkdir _dev
+
 RUN apt-get update && apt-get install -y \
 	curl tar tmux build-essential git ninja-build ccache libopenblas-dev \
 	libopencv-dev python3-opencv wget vim
@@ -30,12 +32,6 @@ RUN curl -LO ${JULIA_URL}/julia-${JULIA_VER}-linux-x86_64.tar.gz && \
 	rm -rf julia-${JULIA_VER}-linux-x86_64.tar.gz && \
 	ln -s /julia-${JULIA_VER}/bin/julia /usr/local/bin/julia
 RUN mkdir /.julia # && chown ${USER_ID} /.julia
-
-COPY dockerfiles/requirements.jl /tmp/
-RUN julia /tmp/requirements.jl
-
-COPY dockerfiles/requirements.txt /tmp/
-RUN python3 -m pip install -r /tmp/requirements.txt
 
 RUN jupyter notebook --generate-config -y
 RUN echo "c.NotebookApp.token = '7u%OV1xWG&7m'" >> /root/.jupyter/jupyter_notebook_config.py

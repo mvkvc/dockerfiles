@@ -15,4 +15,3 @@ distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
 apt-get update
 apt-get install -y nvidia-docker2
 systemctl restart docker
-docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
