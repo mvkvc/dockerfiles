@@ -21,7 +21,6 @@ apt-get install -y nvidia-docker2
 systemctl restart docker
 
 # Update commands and test install
-git clone https://github.com/mvkvc/dockerfiles
-cp dockerfiles/.bash_aliases ~/.bash_aliases
-source .bash_aliases
+cp $PWD/dockerfiles/.bash_aliases $PWD/.bash_aliases
+source $PWD/.bash_aliases && source $PWD/.bash_aliases
 testdocker
