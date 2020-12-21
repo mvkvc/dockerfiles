@@ -8,10 +8,13 @@ WORKDIR /
 RUN apt-get update && apt-get install -y \
 	build-essential \
 	apt-utils \
+	apt-transport-https \
+	ca-certificates \
 	wget \
 	git \
 	vim \
 	python3-pip
+	apt-get install  ca-certificates
 
 RUN wget \
   https://dvc.org/deb/dvc.list \
