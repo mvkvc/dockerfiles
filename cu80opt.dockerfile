@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-devel-ubuntu16.04
+FROM tensorflow/tensorflow:1.3.0-gpu-py3
 ENV DEBIAN_FRONTEND=noninteractive
 
 EXPOSE 8888
