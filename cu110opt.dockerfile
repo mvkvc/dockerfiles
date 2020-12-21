@@ -17,8 +17,8 @@ RUN wget \
   -O /etc/apt/sources.list.d/dvc.list
 RUN apt-get update && apt-get install -y dvc
 
-RUN git clone https://github.com/mvkvc/options-research /home/
-RUN python3 -m pip install -r options-research/requirements.txt
+RUN git clone https://github.com/mvkvc/options-research ddpg_daibing
+RUN python3 -m pip install -r ddpg_daibing/requirements.txt
 RUN python3 -m pip install jupyterlab
 
 RUN jupyter notebook --generate-config -y
