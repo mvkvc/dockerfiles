@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04
+FROM nvidia/cuda:11.1-cudnn8-devel-ubuntu18.04
 ENV DEBIAN_FRONTEND=noninteractive
 ARG JULIA_VER=1.5.3
 ARG JULIA_URL=https://julialang-s3.julialang.org/bin/linux/x64/1.5
