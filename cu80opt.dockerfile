@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y \
 	git \
 	vim \
 	python3-pip
-	apt-get install  ca-certificates
 
 RUN wget \
   https://dvc.org/deb/dvc.list \
