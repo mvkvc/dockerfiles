@@ -5,11 +5,14 @@ EXPOSE 8888
 USER root
 WORKDIR /
 
+RUN add-apt-repository ppa:deadsnakes/ppa
+
 RUN apt-get update && apt-get install -y \
 	build-essential \
 	apt-utils \
 	apt-transport-https \
 	ca-certificates \
+	software-properties-common \
 	wget \
 	git \
 	vim \
