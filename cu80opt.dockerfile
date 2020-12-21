@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.1-cudnn8-devel-ubuntu18.04
+FROM nvidia/cuda:8.0-devel-ubuntu16.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 EXPOSE 8888
