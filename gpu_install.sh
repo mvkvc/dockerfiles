@@ -7,9 +7,9 @@ distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
 apt-get update
 
 # Install nvidia driver
-apt-get install ubuntu-drivers-common -y
+apt-get install -y ubuntu-drivers-common
 ubuntu-drivers devices
-apt-get install nvidia-driver-450 -y
+apt-get install -y nvidia-driver-450
 
 # Install docker
 curl https://get.docker.com | sh \
