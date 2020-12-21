@@ -1,3 +1,5 @@
+alias testdocker="docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi"
+
 # Python image for research
 alias optbuild="docker build -f dockerfiles/optcu110.dockerfile -t options ."
 alias optrun="docker run -it --gpus all --name options"
