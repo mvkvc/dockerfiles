@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04
+FROM nvidia/cuda:11.1-cudnn8-devel-ubuntu18.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 EXPOSE 8888
@@ -7,6 +7,7 @@ WORKDIR /
 
 RUN apt-get update && apt-get install -y \
 	build-essential \
+	apt-utils \
 	wget \
 	git \
 	vim \
