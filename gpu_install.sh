@@ -20,7 +20,5 @@ curl https://get.docker.com | sh \
 apt-get install -y nvidia-docker2
 systemctl restart docker
 
-# Update commands and test install
-cp $PWD/dockerfiles/.bash_aliases $PWD/.bash_aliases
-source $PWD/.bash_aliases && source $PWD/.bash_aliases
-testdocker
+# Test install
+docker run --rm --gpus all nvidia/cuda:11.1-base nvidia-smi
