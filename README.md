@@ -6,7 +6,9 @@ su
 
 apt-get install ubuntu-drivers-common -y
 ubuntu-drivers devices
-ubuntu-drivers autoinstall
+apt-get install nvidia-driver-455 -y
+apt-get install nvidia-utils-455 -y
+nvidia-smi
 
 curl https://get.docker.com | sh \
   && systemctl start docker \
