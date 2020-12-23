@@ -1,5 +1,5 @@
 alias gtop="watch -n3 nvidia-smi"
-alias testopt="docker run --rm --gpus all nvidia/cuda:8.0-devel-ubuntu16.04 nvidia-smi"
+alias testopt="docker run --rm --gpus all nvidia/cuda:11.1-devel-ubuntu16.04 nvidia-smi"
 
 # Python image for research
 alias buildopt="docker build -f dockerfiles/tf130.dockerfile -t options ."
