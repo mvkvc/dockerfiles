@@ -1,9 +1,0 @@
-cmake
-d2l
-gym
-jupyter_kernel_gateway
-matplotlib
-numpy
-pandas
-pytorch-lightning
-tensorflow
