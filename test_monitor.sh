@@ -9,9 +9,10 @@ do
   cpu_load=$(top -b -n2 -p 1 | fgrep "Cpu(s)" | tail -1 | awk -F'id,' -v prefix="$prefix" '{ split($1, vs, ","); v=vs[length(vs)]; sub("%", "", v); printf "%s%.0f\n", prefix, 100 - v }')
   if [[ $cpu_load -lt $threshold ]] && [[ $gpu_load -lt $threshold ]]
   then
-    echo "Idle..."
+    echo "Idle minutes count = $count"
     ((count+=1))
   else
+    echo "Idle minutes count reset: $count"
     ((count==0))
   fi
 
