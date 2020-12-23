@@ -8,14 +8,14 @@ WORKDIR /
 RUN add-apt-repository ppa:deadsnakes/ppa
 
 RUN apt-get update && apt-get install -y \
+	git \
+	vim \
+	wget \
 	build-essential \
 	apt-utils \
 	apt-transport-https \
 	ca-certificates \
 	software-properties-common \
-	wget \
-	git \
-	vim \
 	python3.6 \
 	python3-tk \
 	python3-pip
