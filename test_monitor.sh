@@ -12,8 +12,8 @@ do
     echo "Idle minutes count = $count"
     ((count+=1))
   else
-    echo "Idle minutes count reset: $count"
-    ((count==0))
+    count=0
+    echo "Idle minutes count reset: check $count"
   fi
 
   if (( count>15 ))
