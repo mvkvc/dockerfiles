@@ -20,7 +20,7 @@ do
     echo Shutting down
     # wait a little bit more before actually pulling the plug
     sleep 300
-    sudo poweroff
+    poweroff
   fi
 
   sleep 60
