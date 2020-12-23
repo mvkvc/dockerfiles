@@ -17,7 +17,7 @@ do
 
   if (( count>15 ))
   then
-    echo Shutting down
+    echo "Shutting down"
     # wait a little bit more before actually pulling the plug
     sleep 180
     poweroff

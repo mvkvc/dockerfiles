@@ -6,15 +6,15 @@ EXPOSE 8888
 USER root
 WORKDIR /
 
-RUN mkdir _dev
-RUN mkdir _dev/py
-RUN mkdir _dev/jl
-
 RUN apt-get update && apt-get install -y \
 	curl \
 	tar \
 	tmux \
 	build-essential \
+	apt-utils \
+	apt-transport-https \
+	ca-certificates \
+	software-properties-common \
 	git \
 	ninja-build \
 	ccache \
@@ -25,6 +25,10 @@ RUN apt-get update && apt-get install -y \
 	python3-pip \
 	python3-tk \
 	python3-opencv \
+
+RUN mkdir _dev
+RUN mkdir _dev/py
+RUN mkdir _dev/jl
 
 RUN wget \
   https://dvc.org/deb/dvc.list \
