@@ -1,0 +1,11 @@
+[Unit]
+Description=Usage monitor and shutdown
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/bin/bash /tmp/monitor.sh
+
+[Install]
+WantedBy=multi-user.target
