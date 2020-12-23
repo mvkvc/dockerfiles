@@ -1,5 +1,4 @@
-FROM nvidia/cuda:11.1-cudnn8-devel-ubuntu18.04
-ENV DEBIAN_FRONTEND=noninteractive
+FROM nvidia/driver:450.80.02-ubuntu20.04
 ARG JULIA_VER=1.5.3
 ARG JULIA_URL=https://julialang-s3.julialang.org/bin/linux/x64/1.5
 
@@ -8,10 +7,24 @@ USER root
 WORKDIR /
 
 RUN mkdir _dev
+RUN mkdir _dev/py
+RUN mkdir _dev/jl
 
 RUN apt-get update && apt-get install -y \
-	curl tar tmux build-essential git ninja-build ccache libopenblas-dev \
-	libopencv-dev python3-opencv wget vim
+	curl \
+	tar \
+	tmux \
+	build-essential \
+	git \
+	ninja-build \
+	ccache \
+	libopenblas-dev \
+	libopencv-dev \
+	wget \
+	vim \
+	python3-pip \
+	python3-tk \
+	python3-opencv \
 
 RUN wget \
   https://dvc.org/deb/dvc.list \
