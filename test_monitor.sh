@@ -7,14 +7,13 @@ do
 
   gpu_load=$(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits)
   cpu_load=$(top -b -n2 -p 1 | fgrep "Cpu(s)" | tail -1 | awk -F'id,' -v prefix="$prefix" '{ split($1, vs, ","); v=vs[length(vs)]; sub("%", "", v); printf "%s%.0f\n", prefix, 100 - v }')
-  #cpu_load=$(uptime | sed -e 's/.*load average: //g' | awk '{ print $3 }')
-  #res=$(echo $cpu_load'<'$threshold '||' $gpu_load'<'$threshold | bc -l)
   if [[ $cpu_load -lt $threshold ]] && [[ $gpu_load -lt $threshold ]]
   then
     echo "Idle..."
     ((count+=1))
+  else
+    ((count==0))
   fi
-  echo "Idle minutes count = $count"
 
   if (( count>15 ))
   then
@@ -24,5 +23,5 @@ do
     poweroff
   fi
 
-  sleep 60
+  sleep 3
 done
