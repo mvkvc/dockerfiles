@@ -26,7 +26,7 @@ RUN git clone https://github.com/mvkvc/options-research ddpg_daibing
 
 RUN export GOOGLE_APPLICATION_CREDENTIALS="/ddpg_daibing/docker_auth.json"
 
-RUN CURL curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN wget https://bootstrap.pypa.io/get-pip.py X
 RUN python3.6 get-pip.py
 RUN python3.6 -m pip install -r ddpg_daibing/requirements.txt
