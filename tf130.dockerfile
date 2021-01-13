@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
 	nano \
 	vim \
 	wget \
+	curl \
 	build-essential \
 	apt-utils \
 	apt-transport-https \
