@@ -34,9 +34,8 @@ RUN wget \
 RUN apt update
 RUN apt install -y dvc
 
-WORKDIR /ddpg_daibing
-
-RUN export GOOGLE_APPLICATION_CREDENTIALS="/ddpg_daibing/docker_auth.json"
-RUN dvc pull
-RUN python3.6 ./main_code.py
-RUN curl https://notify.run/2tIWdaItl7cWhQpB -d "Training complete"
+# WORKDIR /ddpg_daibing
+# RUN export GOOGLE_APPLICATION_CREDENTIALS="/ddpg_daibing/docker_auth.json"
+# RUN dvc pull
+# RUN python3.6 ./main_code.py
+# RUN curl https://notify.run/2tIWdaItl7cWhQpB -d "Training complete"
