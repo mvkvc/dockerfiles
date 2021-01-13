@@ -15,17 +15,27 @@ RUN apt-get update && apt-get install -y \
 	apt-utils \
 	apt-transport-https \
 	ca-certificates \
+	gnupg \
 	software-properties-common \
 	python3.6 \
 	python3-tk \
 	python3-pip
 
-RUN wget \
-  https://dvc.org/deb/dvc.list \
-  -O /etc/apt/sources.list.d/dvc.list
-RUN apt update
-RUN apt install -y dvc
-
 RUN git clone https://github.com/mvkvc/options-research ddpg_daibing
 RUN python3.6 -m pip install --upgrade pip
 RUN python3.6 -m pip install -r ddpg_daibing/requirements.txt
+
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - && apt-get update -y && apt-get install google-cloud-sdk -y
+RUN gcloud auth login --no-launch-browser
+
+RUN wget \
+	https://dvc.org/deb/dvc.list \
+	-O /etc/apt/sources.list.d/dvc.list
+RUN apt update
+RUN apt install -y dvc
+
+WORKDIR /ddpg_daibing
+
+RUN dvc pull
+RUN python3 ./main.py
+RUN 
