@@ -38,5 +38,3 @@ RUN apt install -y dvc
 WORKDIR /ddpg_daibing
 
 RUN dvc pull
-RUN python3.6 ./main_code.py
-RUN curl https://notify.run/2tIWdaItl7cWhQpB -d "Training complete"
