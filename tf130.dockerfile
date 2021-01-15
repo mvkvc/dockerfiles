@@ -5,6 +5,9 @@ EXPOSE 8888
 USER root
 WORKDIR /
 
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - && apt-get update -y && apt-get install google-cloud-sdk -y
+RUN gcloud beta auth application-default login
+
 RUN add-apt-repository ppa:deadsnakes/ppa
 
 RUN apt-get update && apt-get install -y \
@@ -18,6 +21,7 @@ RUN apt-get update && apt-get install -y \
 	software-properties-common \
 	python3.6
 
+RUN git config --global url."https://mvkvc@e73705c2d00f9be66d59d768180df4ebc251f83e@github.com/".insteadOf "https://github.com/"
 RUN git clone https://github.com/mvkvc/options-research ddpg_daibing
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -30,4 +34,6 @@ RUN wget \
 RUN apt update
 RUN apt install -y dvc
 
-RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - && apt-get update -y && apt-get install google-cloud-sdk -y
+WORKDIR /ddpg_daibing
+
+RUN dvc pull
